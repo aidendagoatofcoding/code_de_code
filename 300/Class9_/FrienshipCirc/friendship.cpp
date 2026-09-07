@@ -74,6 +74,8 @@ int main() {
         for (int j = 1; j <= n; j++) {
             int friendship;
             cin >> friendship;
+            
+            // only need to unite the friendship if i < j (j< i is same unite)
             if (friendship == 1 && i < j) {
                 dsu.unite(i, j);
             }
