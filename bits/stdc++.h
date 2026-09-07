@@ -1,0 +1,91 @@
+#pragma once
+
+
+
+
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <cctype>
+#include <cerrno>
+#include <cfloat>
+#include <cinttypes>
+#include <climits>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <deque>
+#include <exception>
+#include <forward_list>
+#include <fstream>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iosfwd>
+#include <iostream>
+#include <istream>
+#include <iterator>
+#include <limits>
+#include <list>
+#include <map>
+#include <memory>
+#include <new>
+#include <numeric>
+#include <ostream>
+#include <queue>
+#include <random>
+#include <ratio>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <tuple>
+#include <type_traits>
+#include <typeinfo>
+#include <utility>
+#include <valarray>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
+/*
+#include <regex>
+#include <locale>
+#include <clocale>
+#include <cwchar>
+#include <cwctype>
+
+#include <condition_variable>
+#include <future>
+#include <atomic>
+#include <filesystem>
+#include <chrono>
+#include <system_error>
+#include <charconv>
+#include <version>
+#include <cuchar>
+#include <numbers>
+#include <barrier>
+#include <latch>
+#include <semaphore>
+#include <stop_token>
+#include <span>
+#include <bit>
+#include <compare>
+#include <concepts>
+#include <coroutine>
+#include <ranges>
+#include <source_location>
+#include <syncstream>
+#include <stacktrace>
+#include <format>
+#include <version>*/
+//#include <memory_resource>
