@@ -71,7 +71,6 @@ struct DSU {
         for (int i = 1; i <= n; i++) {
             parent[i] = i;
             rank[i] = 1;
-
         }
     }
 

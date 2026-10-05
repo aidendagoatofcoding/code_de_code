@@ -28,7 +28,7 @@ using namespace std;
 
 
 int main() {
-  long n;
+   long n;
   cin >> n;
   vector<long> arr(n);
   for (long i = 0; i < n; i++){
