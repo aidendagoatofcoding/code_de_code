@@ -55,17 +55,20 @@ int main() {
     vector<vector<long long>> dp(n, vector<long long>(n, 0));
 
     // len is j- 1 + 1 
-    for (int len =  1; len <= n; len++ ) {
-        for (int i = 0; i + len <= n; ++i) {
-            int j = i + len - 1;
-            long long intervalSum = prefix[j + 1] - prefix[i];
+     for (int len =  1; len <= n; len++ ) {
+        for (int i = 0; i + len <n; ++i) {
+            int j = i + len ;
+            if ( j < n){
+                long long intervalSum = prefix[j + 1] - prefix[i];
 
-            dp[i][j] = LLONG_MAX;
-            for (int k = i; k < j; k++ ) {
-                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j] + intervalSum);
+                dp[i][j] = LLONG_MAX;
+                for (int k = i; k < j; k++ ) {
+                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j] + intervalSum);
+                }
             }
         }
-    }
+    } 
+
 
     cout << dp[0][n - 1] << endl;
     return 0;
