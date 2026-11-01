@@ -1,0 +1,1702 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Republic of Goose | HONKISH</title>
+
+<style>
+:root {
+    --bg: #101a16;
+    --sidebar: #17271f;
+    --panel: #1d3227;
+    --panel2: #263d30;
+    --green: #b9df98;
+    --text: #f1f5ee;
+    --muted: #a8bca9;
+    --red: #e89b88;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 245px;
+    height: 100vh;
+    background: var(--sidebar);
+    padding: 22px 14px;
+    border-right: 2px solid #344d3c;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.brand {
+    text-align: center;
+    padding: 10px 0 25px;
+    border-bottom: 1px solid #405744;
+}
+
+.brand h2 {
+    color: var(--green);
+    margin: 8px 0;
+    font-size: 23px;
+}
+
+.brand p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.goose-icon {
+    font-size: 48px;
+}
+
+.nav-title {
+    color: #819886;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 25px 10px 10px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 13px;
+    margin: 5px 0;
+    background: transparent;
+    color: #dce9dc;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 12px;
+}
+
+.nav-button:hover {
+    background: #304737;
+}
+
+.nav-button.active {
+    background: #3b5942;
+    color: var(--green);
+    font-weight: bold;
+}
+
+.sidebar-footer {
+    margin-top: 30px;
+    padding: 12px;
+    background: #24392c;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* MAIN */
+
+.main {
+    margin-left: 245px;
+    padding: 30px;
+    max-width: 1450px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.topbar h1 {
+    color: var(--green);
+    margin: 0;
+    font-size: 25px;
+}
+
+.version {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid #405b47;
+    border-radius: 13px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--green);
+    margin-top: 0;
+}
+
+h3 {
+    color: #d2e7c9;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hero {
+    background: linear-gradient(130deg, #284b34, #17291e);
+    border: 1px solid #59764c;
+    padding: 45px 30px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 5vw, 55px);
+    color: var(--green);
+    margin: 12px 0;
+}
+
+.hero p {
+    color: #d0e1ce;
+}
+
+.hero-goose {
+    font-size: 75px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.action {
+    background: var(--green);
+    color: #142019;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 5px 3px 5px 0;
+}
+
+.action:hover {
+    background: #d3edb8;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 14px;
+    background: #101c19;
+    color: white;
+    border: 1px solid #58735d;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.output {
+    background: #101c19;
+    padding: 17px;
+    border-radius: 8px;
+    min-height: 65px;
+    overflow-wrap: anywhere;
+    color: var(--green);
+    font-size: 15px;
+    line-height: 2;
+    border: 1px solid #354c3b;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    gap: 12px;
+}
+
+.entry {
+    background: var(--panel2);
+    padding: 14px;
+    border-radius: 9px;
+    overflow-wrap: anywhere;
+}
+
+.entry strong {
+    color: var(--green);
+}
+
+.entry p {
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #c4d4c4;
+}
+
+.insult {
+    border-left: 4px solid var(--red);
+}
+
+.insult strong {
+    color: var(--red);
+}
+
+.stat {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.stat h2 {
+    font-size: 28px;
+    margin: 5px;
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.flag {
+    width: 180px;
+    height: 110px;
+    margin: 15px auto;
+    border: 2px solid #b9df98;
+    border-radius: 5px;
+    background: linear-gradient(
+        to bottom,
+        #274d34 0%,
+        #274d34 33%,
+        #e9e9d5 33%,
+        #e9e9d5 66%,
+        #274d34 66%,
+        #274d34 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.law-number {
+    color: var(--green);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.law-card {
+    border-left: 4px solid #b9df98;
+    margin: 12px 0;
+}
+
+.danger-card {
+    border-left: 4px solid var(--red);
+    margin: 12px 0;
+}
+
+.mobile-menu {
+    display: none;
+    background: var(--panel2);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+@media(max-width: 760px) {
+    .sidebar {
+        width: 245px;
+        transform: translateX(-100%);
+        transition: transform .25s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+   
+/* MASTER GOOSE ADMIN */
+.admin-note {
+    padding: 12px;
+    border-left: 4px solid var(--green);
+    background: var(--panel2);
+    border-radius: 7px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+.admin-law-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--panel2);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 9px 0;
+}
+.admin-law-row p { margin: 5px 0 0; }
+.admin-actions { display: flex; gap: 6px; }
+.danger-button {
+    background: #8d3d35;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    padding: 9px 12px;
+}
+.secondary-button {
+    background: var(--panel2);
+    color: var(--text);
+    border: 1px solid #58735d;
+    border-radius: 7px;
+    padding: 9px 12px;
+}
+#adminPanel { display: none; }
+#adminLogin { display: block; }
+.color-preview {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.mobile-menu {
+        display: block;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+        <div class="goose-icon">🪿</div>
+        <h2>REPUBLIC OF GOOSE</h2>
+        <p>THE OFFICIAL NATIONAL PORTAL</p>
+    </div>
+
+    <div class="nav-title">MAIN</div>
+
+    <button class="nav-button active" onclick="showPage('home',this)">
+        🏠 Homepage
+    </button>
+
+    <button class="nav-button" onclick="showPage('country',this)">
+        🗺️ About the Country
+    </button>
+
+    <div class="nav-title">LANGUAGE</div>
+
+    <button class="nav-button" onclick="showPage('translator',this)">
+        🗣️ Translator
+    </button>
+
+    <button class="nav-button" onclick="showPage('alphabet',this)">
+        🔤 Alphabet
+    </button>
+
+    <button class="nav-button" onclick="showPage('dictionary',this)">
+        📖 Dictionary
+    </button>
+
+    <div class="nav-title">GOVERNMENT</div>
+
+    <button class="nav-button" onclick="showPage('laws',this)">
+        ⚖️ National Laws
+    </button>
+
+    <button class="nav-button" onclick="showPage('grammar',this)">
+        📝 Grammar Rules
+    </button>
+
+    <div class="nav-title">ADMINISTRATION</div>
+    <button class="nav-button" onclick="showPage('admin',this)">
+        🔐 Master Goose Admin
+    </button>
+
+    <div class="sidebar-footer">
+        🪿 OFFICIAL GOOSE TERRITORY
+        <br><br>
+        EST. 2026
+        <br>
+        HONKISH ONLY
+    </div>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+
+<main class="main">
+
+<div class="topbar">
+    <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+    <h1 id="pageTitle">Homepage</h1>
+    <span class="version">HONKISH 5.2</span>
+</div>
+
+<!-- ================================= -->
+<!-- HOMEPAGE -->
+<!-- ================================= -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+    <div class="hero-goose">🪿</div>
+
+    <h1>THE REPUBLIC OF GOOSE</h1>
+
+    <p>
+        Welcome to the official national website
+        of the Republic of Goose.
+    </p>
+
+    <p>
+        ONE NATION. ONE LANGUAGE. INFINITE HONKS.
+    </p>
+
+    <button class="action" onclick="showPage('country')">
+        EXPLORE THE COUNTRY
+    </button>
+
+    <button class="action" onclick="showPage('translator')">
+        LEARN HONKISH
+    </button>
+
+</div>
+
+<div class="grid">
+
+    <div class="panel stat">
+        <h2>🪿</h2>
+        <h3>Goose</h3>
+        <p>National Animal</p>
+    </div>
+
+    <div class="panel stat">
+        <h2>HONK</h2>
+        <h3>Honkish</h3>
+        <p>Official Language</p>
+    </div>
+
+    <div class="panel stat">
+        <h2>2026</h2>
+        <h3>Founded</h3>
+        <p>Year of Establishment</p>
+    </div>
+
+    <div class="panel stat">
+        <h2>🍞</h2>
+        <h3>Bread</h3>
+        <p>National Food</p>
+    </div>
+
+</div>
+
+<div class="panel">
+    <h2>📢 NATIONAL ANNOUNCEMENT</h2>
+
+    <div id="announcementDisplay"></div>
+</div>
+
+<div class="panel">
+    <h2>🇬🇴 National Motto</h2>
+
+    <h1 style="color:var(--green);text-align:center">
+        HONK HONK HOOOOONK!
+    </h1>
+
+    <p class="muted" style="text-align:center">
+        "United We Honk."
+    </p>
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- COUNTRY -->
+<!-- ================================= -->
+
+<section id="country" class="page">
+
+<div class="panel">
+    <h2>🗺️ About the Republic of Goose</h2>
+
+    <p>
+        The Republic of Goose is a fictional sovereign nation
+        located in the imagined territory between Canada and Alaska.
+    </p>
+
+    <p>
+        It is a northern country known for its vast forests,
+        frozen lakes, enormous goose populations, and abundant
+        bread reserves.
+    </p>
+
+    <div class="flag">🪿</div>
+
+    <p class="muted" style="text-align:center">
+        Official Flag of the Republic of Goose
+    </p>
+</div>
+
+<div class="panel">
+    <h2>National Information</h2>
+
+    <div class="grid">
+
+        <div class="entry">
+            <strong>Official Name</strong>
+            <p>Republic of Goose</p>
+        </div>
+
+        <div class="entry">
+            <strong>Capital</strong>
+            <p>Honkton</p>
+        </div>
+
+        <div class="entry">
+            <strong>Location</strong>
+            <p>Between Canada and Alaska (fictional)</p>
+        </div>
+
+        <div class="entry">
+            <strong>Official Language</strong>
+            <p>HONKISH</p>
+        </div>
+
+        <div class="entry">
+            <strong>Currency</strong>
+            <p>Goose Dollar (G$)</p>
+        </div>
+
+        <div class="entry">
+            <strong>National Animal</strong>
+            <p>Canada Goose</p>
+        </div>
+
+        <div class="entry">
+            <strong>Government</strong>
+            <p>Federal Goose Republic</p>
+        </div>
+
+        <div class="entry">
+            <strong>National Food</strong>
+            <p>Bread</p>
+        </div>
+
+        <div class="entry">
+            <strong>National Bird</strong>
+            <p>Goose</p>
+        </div>
+
+        <div class="entry">
+            <strong>National Motto</strong>
+            <p>United We Honk</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="panel">
+    <h2>Geography</h2>
+
+    <p>
+        The country occupies an imaginary northern territory
+        along the Alaska-Canada border.
+    </p>
+
+    <ul>
+        <li>North: Arctic Ocean</li>
+        <li>West: Alaska</li>
+        <li>East: Canada</li>
+        <li>South: Great Goose Forest</li>
+    </ul>
+
+    <h3>Major Regions</h3>
+
+    <ul>
+        <li>Honkton — National Capital</li>
+        <li>Bread Valley — Agricultural Region</li>
+        <li>Great Goose Forest — Wildlife Region</li>
+        <li>Lake HONK — Largest National Lake</li>
+        <li>Feather Mountains — Northern Highlands</li>
+    </ul>
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- TRANSLATOR -->
+<!-- ================================= -->
+
+<section id="translator" class="page">
+
+<div class="panel">
+    <h2>English → HONKISH</h2>
+
+    <textarea id="english"
+    placeholder="Hello my child, welcome to the Republic of Goose."></textarea>
+
+    <button class="action" onclick="translateEnglish()">
+        TRANSLATE
+    </button>
+
+    <h3>HONKISH Translation</h3>
+
+    <div class="output" id="honkOutput">HONK...</div>
+
+    <br>
+
+    <button class="action" onclick="copyText('honkOutput')">
+        COPY
+    </button>
+</div>
+
+<div class="panel">
+    <h2>HONKISH → English</h2>
+
+    <textarea id="honkInput"
+    placeholder="Paste HONKISH here..."></textarea>
+
+    <button class="action" onclick="translateHonk()">
+        TRANSLATE
+    </button>
+
+    <h3>English Translation</h3>
+
+    <div class="output" id="englishOutput">
+        Waiting for honks...
+    </div>
+
+    <br>
+
+    <button class="action" onclick="copyText('englishOutput')">
+        COPY
+    </button>
+</div>
+
+<div class="panel">
+    <h2>Code System</h2>
+
+    <p>Alphabet codes:</p>
+    <p class="muted">
+        Five binary honk sounds followed by K.
+    </p>
+
+    <p>Dictionary codes:</p>
+    <p class="muted">
+        GOOSEK + binary identifier + K.
+    </p>
+
+    <p>
+        These are separate code formats, so dictionary words
+        cannot be mistaken for alphabet letters.
+    </p>
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- ALPHABET -->
+<!-- ================================= -->
+
+<section id="alphabet" class="page">
+
+<div class="panel">
+    <h2>HONKISH Alphabet</h2>
+
+    <p>
+        Every letter is represented by a five-bit binary code.
+        The code ends with an additional K marker.
+    </p>
+
+    <p class="muted">
+        HONKK = 0 | HOOONKK = 1 | FINAL K = END MARKER
+    </p>
+
+    <div class="grid" id="alphabetGrid"></div>
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- DICTIONARY -->
+<!-- ================================= -->
+
+<section id="dictionary" class="page">
+
+<div class="panel">
+    <h2>📖 Official HONKISH Dictionary</h2>
+
+    <p>
+        Browse the national vocabulary.
+    </p>
+
+    <input id="search"
+    placeholder="Search English or HONKISH..."
+    oninput="renderDictionary()">
+
+    <div class="grid" id="dictionaryGrid"></div>
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- NATIONAL LAWS -->
+<!-- ================================= -->
+
+<section id="laws" class="page">
+
+<div class="panel">
+    <h2>⚖️ Constitution and National Laws</h2>
+
+    <p>
+        The following laws govern the Republic of Goose.
+        All laws are fictional and part of the country's lore.
+    </p>
+
+    <div id="lawsDisplay"></div>
+
+</div>
+
+<div class="panel">
+    <h2>🚫 OFFICIAL INSULT AND OFFENSIVE PHRASE REGISTER</h2>
+
+    <p>
+        The following expressions are considered particularly
+        disrespectful in fictional goose society.
+    </p>
+
+    <input id="insultSearch"
+    placeholder="Search offensive phrases..."
+    oninput="renderInsults()">
+
+    <div class="grid" id="insultGrid"></div>
+
+</div>
+
+<div class="panel">
+    <h2>National Penalties</h2>
+
+    <div class="entry danger-card">
+        <strong>Minor Offense</strong>
+        <p>One public apology in HONKISH.</p>
+    </div>
+
+    <div class="entry danger-card">
+        <strong>Moderate Offense</strong>
+        <p>Temporary suspension of bread privileges.</p>
+    </div>
+
+    <div class="entry danger-card">
+        <strong>Major Offense</strong>
+        <p>Appearance before the Goose Parliament.</p>
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- MASTER GOOSE ADMIN -->
+<!-- ================================= -->
+
+<section id="admin" class="page">
+    <div class="panel">
+        <h2>🔐 Master Goose Administration</h2>
+        <p class="muted">Authorized members of the Goose Government only.</p>
+        <div id="adminLogin">
+            <h3>Master Goose Login</h3>
+            <label for="adminPassword">Administrator password</label>
+            <input id="adminPassword" type="password" placeholder="Enter the Master Goose password" autocomplete="off" onkeydown="if(event.key === 'Enter') adminLogin()">
+            <button class="action" onclick="adminLogin()">ENTER ADMIN PANEL</button>
+            <p id="loginMessage" class="muted" aria-live="polite"></p>
+        </div>
+
+        <div id="adminPanel">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+                <h3>Welcome, Master Goose.</h3>
+                <button class="secondary-button" onclick="adminLogout()">LOG OUT</button>
+            </div>
+
+            <hr style="border-color:#405b47">
+
+            <h3>📢 Edit National Announcement</h3>
+            <p class="muted">Use a new line for each paragraph.</p>
+            <textarea id="announcementEditor"></textarea>
+            <button class="action" onclick="saveAnnouncement()">SAVE ANNOUNCEMENT</button>
+
+            <hr style="border-color:#405b47">
+
+            <h3>⚖️ Manage National Laws</h3>
+            <div id="adminLawList"></div>
+            <h3 id="lawFormHeading">Add a Law</h3>
+            <input id="lawTitleInput" placeholder="Law title (e.g. Bread Protection Act)">
+            <textarea id="lawDescriptionInput" placeholder="Describe the law..."></textarea>
+            <button class="action" onclick="saveLaw()">SAVE LAW</button>
+            <button class="secondary-button" onclick="cancelLawEdit()">CANCEL</button>
+
+            <hr style="border-color:#405b47">
+
+            <h3>🎨 Website Color Theme</h3>
+            <label for="themeSelect">Choose a national theme</label>
+            <select id="themeSelect" onchange="previewTheme(this.value)">
+                <option value="forest">Forest Green (Default)</option>
+                <option value="ocean">Ocean Blue</option>
+                <option value="sunset">Sunset</option>
+                <option value="royal">Royal Purple</option>
+            </select>
+            <button class="action" onclick="saveTheme()">SAVE COLOR THEME</button>
+            <p class="muted">Theme changes are saved in this browser.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================================= -->
+<!-- GRAMMAR -->
+<!-- ================================= -->
+
+<section id="grammar" class="page">
+
+<div class="panel">
+    <h2>📝 HONKISH Grammar Rules</h2>
+
+    <h3>1. Sentence Structure</h3>
+    <p>
+        HONKISH uses English sentence order:
+        Subject → Verb → Object.
+    </p>
+
+    <h3>2. Word Separation</h3>
+    <p>
+        Every word is separated with a slash (/).
+    </p>
+
+    <h3>3. Alphabet</h3>
+    <p>
+        Each letter is represented by five binary sounds
+        and an ending K.
+    </p>
+
+    <h3>4. Dictionary Words</h3>
+    <p>
+        Dictionary entries use the GOOSEK prefix,
+        a unique binary identifier, and a final K.
+    </p>
+
+    <h3>5. Questions</h3>
+    <p>
+        Questions end with a question mark.
+    </p>
+
+    <h3>6. Emotions</h3>
+    <p>
+        Long honks express stronger emotions.
+        Rapid honks express urgency.
+    </p>
+
+    <h3>7. Unknown Words</h3>
+    <p>
+        Any word not in the dictionary is converted
+        letter by letter using the alphabet.
+    </p>
+
+    <h3>8. Capitalization</h3>
+    <p>
+        HONKISH is not case-sensitive.
+    </p>
+
+</div>
+
+</section>
+
+</main>
+
+<script>
+
+// ======================================
+// ALPHABET SYSTEM
+// ======================================
+
+const alphabet = {};
+
+for (let i = 0; i < 26; i++) {
+
+    const letter = String.fromCharCode(65 + i);
+
+    const binary = i.toString(2).padStart(5, "0");
+
+    const sounds = binary.split("")
+        .map(bit => bit === "0" ? "HONKK" : "HOOONKK");
+
+    // K is the alphabet end marker.
+    alphabet[letter] = [...sounds, "K"].join(" ");
+
+}
+
+// ======================================
+// NORMAL DICTIONARY
+// ======================================
+
+const normalWords = `
+
+hello hi hey greetings goodbye bye farewell
+yes no maybe please thanks thank you sorry welcome
+goose geese duck ducks human humans friend enemy family
+baby king queen leader citizen flock parliament president
+government country nation republic empire kingdom citizen
+food bread water fish corn seed snack meal apple
+happy sad angry scared excited tired hungry confused love
+hate funny boring beautiful strong weak good bad
+eat sleep run walk fly swim think help stop
+attack defend win lose want need give take come go
+house home pond sun moon tree sky world nest forest
+danger war victory secret mission army guard freedom
+honor glory territory capital mountain lake river snow
+what why where when who how you i me we they
+it this that and or but because not very
+good big small fast slow old new hot cold
+morning night today tomorrow yesterday now later always never
+duckling eagle hawk pigeon chicken swan penguin bird animal
+fox dog cat horse cow bear wolf rabbit moose
+breadth feather wing beak tail bill egg nest feather
+school teacher student book language word sentence alphabet
+computer internet website code program translator dictionary
+music song sound honk honking speech talk listen
+north south east west winter summer spring autumn
+one two three four five six seven eight nine ten
+eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen
+nineteen twenty hundred thousand million
+beautifully quickly slowly carefully loudly quietly
+run away come here look out watch out be careful
+i am you are we are they are it is
+my your our their his her its
+i love you i hate you hello my child
+welcome home good morning good night thank you
+good luck long live the goose empire
+united we honk bread is life
+`
+
+.trim().split(/\s+/);
+
+// Multiword phrases have their own entries.
+const phrases = [
+    "thank you",
+    "good morning",
+    "good night",
+    "good luck",
+    "i love you",
+    "i hate you",
+    "hello my child",
+    "welcome home",
+    "long live the goose empire",
+    "united we honk",
+    "bread is life",
+    "come here",
+    "look out",
+    "watch out",
+    "be careful",
+    "i am",
+    "you are",
+    "we are",
+    "they are",
+    "it is"
+];
+
+// ======================================
+// OFFICIAL INSULT REGISTER
+// ======================================
+
+const insults = [
+
+"featherless chicken",
+"you absolute bread thief",
+"you useless duck",
+"your honk is weak",
+"you have no feathers",
+"you are a fake goose",
+"you walk like a pigeon",
+"your nest is terrible",
+"you are a pond disappointment",
+"you smell like wet bread",
+"you are a disgrace to the flock",
+"your wings are decorative",
+"you have the intelligence of a rock",
+"you are an embarrassment to geese",
+"your feathers are crooked",
+"you cannot even honk properly",
+"you are allergic to flying",
+"you are not worthy of bread",
+"you are a walking bread shortage",
+"your honk sounds like a squeaky toy",
+"you are the weakest goose",
+"you have the brain of a duck",
+"your nest has negative value",
+"you are a featherless fraud",
+"you are a disgrace to bread",
+"your pond privileges are revoked",
+"you are a terrible goose",
+"you are banned from the flock",
+"you are a failed goose",
+"your feathers look borrowed",
+"you have the charisma of a wet sock",
+"your honk has been rejected",
+"you are a discount pigeon",
+"your beak is unemployed",
+"you are a professional bread loser",
+"you have been out-honked",
+"you are the reason ducks exist",
+"you are a national embarrassment",
+"your goose license is revoked",
+"you are a walking honk malfunction"
+
+];
+
+// ======================================
+// UNIQUE CODE GENERATOR
+// ======================================
+
+// Dictionary code format:
+// GOOSEK + binary identifier + K
+//
+// Alphabet format:
+// five binary sounds + K
+//
+// The GOOSEK prefix makes dictionary codes
+// structurally different from alphabet codes.
+
+const dictionary = {};
+const reverseDictionary = {};
+
+const allEntries = [
+    ...new Set([
+        ...normalWords,
+        ...phrases,
+        ...insults
+    ])
+];
+
+function makeDictionaryCode(index) {
+
+    const binary = index.toString(2).padStart(12, "0");
+
+    const sounds = binary.split("")
+        .map(bit => bit === "0" ? "HONKK" : "HOOONKK");
+
+    return ["GOOSEK", ...sounds, "K"].join(" ");
+
+}
+
+allEntries.forEach((word, index) => {
+
+    const code = makeDictionaryCode(index + 1);
+
+    dictionary[word] = code;
+
+    reverseDictionary[code] = word;
+
+});
+
+// ======================================
+// ENCODING AND DECODING
+// ======================================
+
+function encodeWord(word) {
+
+    return word.toUpperCase().split("").map(letter => {
+
+        return alphabet[letter] || "";
+
+    }).filter(Boolean).join(" | ");
+
+}
+
+function decodeLetters(code) {
+
+    return code.split("|").map(part => {
+
+        const normalized = part.trim().split(/\s+/).join(" ");
+
+        for (const [letter, honk] of Object.entries(alphabet)) {
+
+            if (honk === normalized) return letter;
+
+        }
+
+        return "?";
+
+    }).join("");
+
+}
+
+// ======================================
+// TOKENIZATION
+// ======================================
+
+function tokenize(text) {
+
+    return text.toLowerCase().match(
+        /[a-z]+(?:'[a-z]+)?|[.,!?;:]/g
+    ) || [];
+
+}
+
+// ======================================
+// ENGLISH TO HONKISH
+// ======================================
+
+function translateEnglish() {
+
+    const text = document.getElementById("english").value;
+
+    const tokens = tokenize(text);
+
+    const result = [];
+
+    let i = 0;
+
+    // Longest phrase matching.
+    const sortedPhrases = Object.keys(dictionary)
+        .sort((a, b) => b.split(" ").length - a.split(" ").length);
+
+    while (i < tokens.length) {
+
+        const token = tokens[i];
+
+        if (/^[.,!?;:]$/.test(token)) {
+            result.push(token);
+            i++;
+            continue;
+        }
+
+        let found = false;
+
+        for (const phrase of sortedPhrases) {
+
+            const parts = phrase.split(" ");
+
+            if (parts.length === 1) continue;
+
+            const matches = parts.every((part, j) =>
+                tokens[i + j] === part
+            );
+
+            if (matches) {
+
+                result.push(dictionary[phrase]);
+
+                i += parts.length;
+
+                found = true;
+
+                break;
+
+            }
+
+        }
+
+        if (found) continue;
+
+        if (dictionary[token]) {
+
+            result.push(dictionary[token]);
+
+        } else {
+
+            result.push(encodeWord(token));
+
+        }
+
+        i++;
+
+    }
+
+    document.getElementById("honkOutput").textContent =
+        result.join(" / ") || "HONK...";
+
+}
+
+// ======================================
+// HONKISH TO ENGLISH
+// ======================================
+
+function translateHonk() {
+
+    const input = document.getElementById("honkInput")
+        .value.trim();
+
+    if (!input) {
+
+        document.getElementById("englishOutput").textContent =
+            "Waiting for honks...";
+
+        return;
+
+    }
+
+    const tokens = input.split(/\s*\/\s*/);
+
+    const result = tokens.map(token => {
+
+        const code = token.trim();
+
+        if (!code) return "";
+
+        if (reverseDictionary[code]) {
+
+            return reverseDictionary[code];
+
+        }
+
+        if (/^[.,!?;:]$/.test(code)) return code;
+
+        return decodeLetters(code);
+
+    });
+
+    document.getElementById("englishOutput").textContent =
+        result.join(" ");
+
+}
+
+// ======================================
+// ALPHABET DISPLAY
+// ======================================
+
+function renderAlphabet() {
+
+    const grid = document.getElementById("alphabetGrid");
+
+    grid.innerHTML = Object.entries(alphabet).map(([letter, code]) => `
+
+        <div class="entry">
+            <strong>LETTER ${letter}</strong>
+            <p>${escapeHTML(code)}</p>
+        </div>
+
+    `).join("");
+
+}
+
+// ======================================
+// REGULAR DICTIONARY
+// ======================================
+
+function renderDictionary() {
+
+    const search = document.getElementById("search")
+        .value.toLowerCase();
+
+    const grid = document.getElementById("dictionaryGrid");
+
+    const entries = Object.entries(dictionary).filter(([word, code]) =>
+
+        word.includes(search) || code.toLowerCase().includes(search)
+
+    ).filter(([word]) => !insults.includes(word));
+
+    grid.innerHTML = entries.map(([word, code]) => `
+
+        <div class="entry">
+            <strong>${escapeHTML(word.toUpperCase())}</strong>
+            <p>${escapeHTML(code)}</p>
+        </div>
+
+    `).join("");
+
+    if (!entries.length) {
+
+        grid.innerHTML = "<p>No words found.</p>";
+
+    }
+
+}
+
+// ======================================
+// OFFENSIVE PHRASE REGISTER
+// ======================================
+
+function renderInsults() {
+
+    const search = document.getElementById("insultSearch")
+        .value.toLowerCase();
+
+    const grid = document.getElementById("insultGrid");
+
+    const entries = insults.filter(word =>
+        word.includes(search)
+    );
+
+    grid.innerHTML = entries.map(word => `
+
+        <div class="entry insult">
+            <strong>${escapeHTML(word.toUpperCase())}</strong>
+            <p>${escapeHTML(dictionary[word])}</p>
+        </div>
+
+    `).join("");
+
+    if (!entries.length) {
+
+        grid.innerHTML = "<p>No phrases found.</p>";
+
+    }
+
+}
+
+// ======================================
+// HTML ESCAPING
+// ======================================
+
+function escapeHTML(text) {
+
+    return text.replace(/[&<>"']/g, char => ({
+
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+
+    })[char]);
+
+}
+
+// ======================================
+// NAVIGATION
+// ======================================
+
+const pageNames = {
+
+    home: "Homepage",
+    country: "About the Country",
+    translator: "HONKISH Translator",
+    alphabet: "HONKISH Alphabet",
+    dictionary: "National Dictionary",
+    laws: "National Laws and Insults",
+    grammar: "HONKISH Grammar",
+    admin: "Master Goose Admin"
+
+};
+
+function showPage(page, button) {
+
+    document.querySelectorAll(".page").forEach(element => {
+
+        element.classList.remove("active");
+
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    document.getElementById("pageTitle").textContent =
+        pageNames[page];
+
+    document.querySelectorAll(".nav-button").forEach(element => {
+
+        element.classList.remove("active");
+
+    });
+
+    if (button) {
+
+        button.classList.add("active");
+
+    } else {
+
+        document.querySelectorAll(".nav-button").forEach(element => {
+
+            if (element.getAttribute("onclick")?.includes(
+                "'" + page + "'"
+            )) {
+                element.classList.add("active");
+            }
+
+        });
+
+    }
+
+    document.getElementById("sidebar").classList.remove("open");
+
+    window.scrollTo(0, 0);
+
+}
+
+// ======================================
+// MOBILE SIDEBAR
+// ======================================
+
+function toggleSidebar() {
+
+    document.getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+// ======================================
+// COPY BUTTON
+// ======================================
+
+function copyText(id) {
+
+    const text = document.getElementById(id).textContent;
+
+    navigator.clipboard.writeText(text)
+        .then(() => alert("Copied successfully! HONK!"))
+        .catch(() => alert("Copy failed. Select the text manually."));
+
+}
+
+// ======================================
+// MASTER GOOSE ADMINISTRATION
+// ======================================
+
+// Change this demo password before using the panel.
+// A password stored in front-end JavaScript is NOT secure for a public site.
+// Change this value to choose your own Master Goose password.
+const MASTER_GOOSE_PASSWORD = "HONK2026";
+
+const defaultAnnouncement = [
+    "The Republic of Goose officially recognizes HONKISH as its national language.",
+    "All citizens are encouraged to learn the alphabet, respect the national laws, and protect bread supplies."
+];
+
+const defaultLaws = [
+    { title: "Official Language", description: "HONKISH is the official national language. Every citizen has the right to communicate in honks." },
+    { title: "National Animal", description: "The goose is the official national animal and shall be respected throughout the country." },
+    { title: "Bread Protection Act", description: "Bread is a protected national resource. Unauthorized bread theft is punishable under national goose regulations." },
+    { title: "Mandatory Honking", description: "All citizens are encouraged to HONK at least once every day." },
+    { title: "Duck Regulations", description: "Ducks must respect national goose customs. All disputes between ducks and geese shall be reviewed by the Goose Parliament." },
+    { title: "National Territory", description: "The fictional territory of the Republic of Goose is located between Alaska and Canada." },
+    { title: "National Flag", description: "The national flag must be displayed during official goose holidays." }
+];
+
+const themes = {
+    forest: { bg:"#101a16", sidebar:"#17271f", panel:"#1d3227", panel2:"#263d30", green:"#b9df98", text:"#f1f5ee", muted:"#a8bca9", red:"#e89b88" },
+    ocean: { bg:"#101923", sidebar:"#172b3d", panel:"#1d354b", panel2:"#29465f", green:"#8ed9e8", text:"#eff8fc", muted:"#a9c4d2", red:"#f0a0a0" },
+    sunset: { bg:"#211713", sidebar:"#38231c", panel:"#4a2d23", panel2:"#624033", green:"#ffd08a", text:"#fff4e9", muted:"#d8b9a5", red:"#ff9c91" },
+    royal: { bg:"#191426", sidebar:"#29203d", panel:"#382b50", panel2:"#493961", green:"#d1b5ff", text:"#f7f1ff", muted:"#c0b2d5", red:"#ff9da9" }
+};
+
+let currentLaws = loadStored("gooseLaws", defaultLaws);
+let currentAnnouncement = loadStored("gooseAnnouncement", defaultAnnouncement);
+let currentTheme = loadStored("gooseTheme", "forest");
+let editingLawIndex = -1;
+
+function loadStored(key, fallback) {
+    try {
+        const value = localStorage.getItem(key);
+        return value === null ? fallback : JSON.parse(value);
+    } catch (error) {
+        return fallback;
+    }
+}
+
+function saveStored(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        alert("Could not save. Your browser may have storage disabled.");
+    }
+}
+
+function renderAnnouncement() {
+    const display = document.getElementById("announcementDisplay");
+    if (!display) return;
+    display.innerHTML = currentAnnouncement.map(line =>
+        `<p>${escapeHTML(line)}</p>`
+    ).join("");
+}
+
+function renderLaws() {
+    const display = document.getElementById("lawsDisplay");
+    if (!display) return;
+    display.innerHTML = currentLaws.map((law, index) => `
+        <div class="entry law-card">
+            <span class="law-number">ARTICLE ${toRoman(index + 1)}</span>
+            <h3>${escapeHTML(law.title)}</h3>
+            <p>${escapeHTML(law.description)}</p>
+        </div>
+    `).join("");
+}
+
+function toRoman(number) {
+    const values = [[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]];
+    let result = "";
+    for (const [value, numeral] of values) {
+        while (number >= value) {
+            result += numeral;
+            number -= value;
+        }
+    }
+    return result;
+}
+
+function renderAdminLawList() {
+    const list = document.getElementById("adminLawList");
+    if (!list) return;
+    list.innerHTML = currentLaws.map((law, index) => `
+        <div class="admin-law-row">
+            <div><strong>ARTICLE ${toRoman(index + 1)} — ${escapeHTML(law.title)}</strong><p class="muted">${escapeHTML(law.description)}</p></div>
+            <div class="admin-actions">
+                <button class="secondary-button" onclick="editLaw(${index})">EDIT</button>
+                <button class="danger-button" onclick="deleteLaw(${index})">DELETE</button>
+            </div>
+        </div>
+    `).join("") || "<p class='muted'>No laws have been added yet.</p>";
+}
+
+function adminLogin() {
+    const password = document.getElementById("adminPassword").value;
+    if (password === MASTER_GOOSE_PASSWORD) {
+        document.getElementById("adminLogin").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+        document.getElementById("loginMessage").textContent = "";
+        document.getElementById("announcementEditor").value = currentAnnouncement.join("\\n");
+        document.getElementById("themeSelect").value = currentTheme;
+        renderAdminLawList();
+    } else {
+        document.getElementById("loginMessage").textContent = "Access denied. Incorrect Master Goose password.";
+        document.getElementById("adminPassword").value = "";
+    }
+}
+
+function adminLogout() {
+    document.getElementById("adminPanel").style.display = "none";
+    document.getElementById("adminLogin").style.display = "block";
+    document.getElementById("adminPassword").value = "";
+    cancelLawEdit();
+}
+
+function saveAnnouncement() {
+    currentAnnouncement = document.getElementById("announcementEditor").value
+        .split("\\n").map(line => line.trim()).filter(Boolean);
+    saveStored("gooseAnnouncement", currentAnnouncement);
+    renderAnnouncement();
+    alert("National announcement updated. HONK!");
+}
+
+function editLaw(index) {
+    editingLawIndex = index;
+    document.getElementById("lawTitleInput").value = currentLaws[index].title;
+    document.getElementById("lawDescriptionInput").value = currentLaws[index].description;
+    document.getElementById("lawFormHeading").textContent = "Edit Law";
+    document.getElementById("lawTitleInput").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function saveLaw() {
+    const title = document.getElementById("lawTitleInput").value.trim();
+    const description = document.getElementById("lawDescriptionInput").value.trim();
+    if (!title || !description) {
+        alert("Enter both a law title and description.");
+        return;
+    }
+    const law = { title, description };
+    if (editingLawIndex >= 0) currentLaws[editingLawIndex] = law;
+    else currentLaws.push(law);
+    saveStored("gooseLaws", currentLaws);
+    renderLaws();
+    renderAdminLawList();
+    cancelLawEdit();
+    alert("The Goose Constitution has been updated!");
+}
+
+function deleteLaw(index) {
+    if (!confirm("Are you sure you want to remove this law?")) return;
+    currentLaws.splice(index, 1);
+    saveStored("gooseLaws", currentLaws);
+    renderLaws();
+    renderAdminLawList();
+}
+
+function cancelLawEdit() {
+    editingLawIndex = -1;
+    const title = document.getElementById("lawTitleInput");
+    const description = document.getElementById("lawDescriptionInput");
+    if (title) title.value = "";
+    if (description) description.value = "";
+    const heading = document.getElementById("lawFormHeading");
+    if (heading) heading.textContent = "Add a Law";
+}
+
+function applyTheme(name) {
+    const theme = themes[name] || themes.forest;
+    const root = document.documentElement;
+    Object.entries(theme).forEach(([key, value]) => root.style.setProperty("--" + key, value));
+    currentTheme = name;
+}
+
+function previewTheme(name) {
+    applyTheme(name);
+}
+
+function saveTheme() {
+    currentTheme = document.getElementById("themeSelect").value;
+    applyTheme(currentTheme);
+    saveStored("gooseTheme", currentTheme);
+    alert("National color theme saved!");
+}
+
+// ======================================
+// INITIALIZATION
+// ======================================
+
+renderAnnouncement();
+renderLaws();
+applyTheme(currentTheme);
+renderAlphabet();
+renderDictionary();
+renderInsults();
+
+</script>
+
+</body>
+</html>

@@ -72,7 +72,15 @@ void check(string s1, string s2, string s3) {
     }
     vector<vector<bool>> dp(n + 1, vector<bool>(m + 1, false));
     dp[0][0] = true;
-    
+    //recurssion+ memorization 
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j <= m; j++) {
+            if (i > 0 && s3[i + j - 1] == s1[i - 1]) {
+            }
+            if (j > 0 && s3[i + j - 1] == s2[j - 1]) {
+            }
+        }
+    }
     if (dp[n][m]) {
         cout << "yes" << endl;
     } else {
